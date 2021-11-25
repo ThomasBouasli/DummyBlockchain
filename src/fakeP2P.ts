@@ -43,15 +43,15 @@ class FakeP2P {
     return this.transactions[this.transactions.length - 1].data.hash;
   }
 
-  getTransactionsBySender(payerPublicKey: string) {
+  getTransactionsBySenderBeforeThisOne(payerPublicKey: string, date : number) {
     return this.transactions.filter(
-      (transaction) => transaction.data.payerPublicKey === payerPublicKey
+      (transaction) => transaction.data.payerPublicKey === payerPublicKey && transaction.timestamp < date
     );
   }
 
-  getTransactionsByReceiver(payeePublicKey: string) {
+  getTransactionsByReceiverBeforeThisOne(payeePublicKey: string, date : number) {
     return this.transactions.filter( 
-      (transaction) => transaction.data.payeePublicKey === payeePublicKey
+      (transaction) => transaction.data.payeePublicKey === payeePublicKey && transaction.timestamp < date
     );
   }
 }

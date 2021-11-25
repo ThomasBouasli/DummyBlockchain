@@ -36,11 +36,11 @@ var FakeP2P = /** @class */ (function () {
         }
         return this.transactions[this.transactions.length - 1].data.hash;
     };
-    FakeP2P.prototype.getTransactionsBySender = function (payerPublicKey) {
-        return this.transactions.filter(function (transaction) { return transaction.data.payerPublicKey === payerPublicKey; });
+    FakeP2P.prototype.getTransactionsBySenderBeforeThisOne = function (payerPublicKey, date) {
+        return this.transactions.filter(function (transaction) { return transaction.data.payerPublicKey === payerPublicKey && transaction.timestamp < date; });
     };
-    FakeP2P.prototype.getTransactionsByReceiver = function (payeePublicKey) {
-        return this.transactions.filter(function (transaction) { return transaction.data.payeePublicKey === payeePublicKey; });
+    FakeP2P.prototype.getTransactionsByReceiverBeforeThisOne = function (payeePublicKey, date) {
+        return this.transactions.filter(function (transaction) { return transaction.data.payeePublicKey === payeePublicKey && transaction.timestamp < date; });
     };
     return FakeP2P;
 }());
