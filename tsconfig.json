@@ -2,8 +2,9 @@
   "compilerOptions": {
     "lib": ["es2020"],
     "module": "commonjs",
-    "target": "es2019",
+    "target": "es5",
     "types": ["node"],
+    "outDir": "build",
  
     "strict": true,
     "esModuleInterop": true,
